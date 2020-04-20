@@ -1,0 +1,20 @@
+{
+  "name": "Services",
+  "short_name": "Services",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A news app.",
+  "icons": [
+    {
+      "src": "/plate-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/plate-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}

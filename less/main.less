@@ -1,0 +1,283 @@
+main {
+	background: linear-gradient(120.08deg, @warm-blue 0%, @pale-magenta 79.73%);
+	background-blend-mode: multiply;
+	height: 896px;
+}
+
+
+.scheduled {
+	border-radius: 30px;
+	background: @white;
+	min-height: 645px;
+	// margin-top: 2.0625rem;
+	transform: translate(0,251px);
+}
+
+h1 {
+	font-size: 2rem;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: @white-two;
+	margin: 0;
+	padding: 3.75rem 0 0 2.8125rem;
+}
+
+h2 {
+	font-size: 1rem;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: @white;
+	margin: 0.9375rem 0 0 2.8125rem;
+}
+
+.btns {
+	padding-top: 19px;
+	position: relative;
+}
+
+.sort {
+	width: 26px;
+	height: 3px;
+	background: @warm-grey;
+	margin: 0 0 0 53px;
+	position: relative;
+	cursor: pointer;
+
+	&::after, &::before {
+		width: 20px;
+		height: 3px;
+		content: '';
+		position: absolute;
+		top: 8px;
+		background: @warm-grey;
+		left: 50%;
+		transform: translate(-50%,0);
+	}
+
+	&::before {
+		top: 16px;
+		width: 14px;
+	}
+}
+
+.drag {
+	width: 55px;
+	background: @warm-grey;
+	height: 3px;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%,0);
+	margin-top: -10px;
+}
+
+.newSchedule {
+	width: 19px;
+	height: 3px;
+	background: @warm-grey;
+	position: absolute;
+	right: 50px;
+	margin-top: 10px;
+	cursor: pointer;
+
+	&::before {
+		width: 19px;
+		height: 3px;
+		position: absolute;
+		content: '';
+		transform: rotate(90deg);
+		background: @warm-grey;
+	}
+}
+
+.current {
+	position: fixed;
+}
+
+.aniSchedule {
+	transform: translate(-50%,-50%) scale(0)!important;
+	transition: transform .3s;	
+}
+
+.aniDelete {
+	transform: scale(0)!important;
+	transition: transform .3s;
+}
+
+.addSchedule {
+	width: 100vw;
+	height: 100vh;
+	background: rgba(12,12,12,.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	.content {
+		width: 83.0917874vw;
+		height: 29.5rem;
+		background: @white;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%) scale(1);
+		border-radius: 15px;
+		transition: transform .3s ease-in;	
+	}
+}
+
+.close {
+	width: 19px;
+	height: 3px;
+	background: @pastel-red;
+	transform: rotate(-45deg);
+	position: absolute;	
+	cursor: pointer;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 19px;
+		height: 3px;
+		background: @pastel-red;
+		transform: rotate(90deg);
+	}
+}
+
+.content {
+
+	.close {
+		top: 23px;
+		right: 1rem;
+	}
+
+	h3 {
+		font-size: 1.25rem;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		color: @black-two;
+		text-align: center;
+		margin-top: .75rem;
+	}
+
+	form {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		width: 72.4637681vw;
+		margin: 0 auto;
+		align-items: flex-start;
+
+		input, select {
+			width: 72.4637681vw;
+			height: 49px;
+			border: none;
+			border-radius: 10px;
+			margin-bottom: 1.3125rem; 
+			background: @white-four;
+			padding-left: 1.3125rem;
+			box-sizing: border-box;
+			color: @black-two;
+			font-family: Roboto;
+		}
+
+		select {
+			padding-left: 1rem;
+		}
+
+		select:required:invalid {
+			color: @warm-grey;
+		}
+
+		option[value=""][disabled] {
+			display: none;
+		}
+
+		input:nth-child(2), input:nth-child(3) {
+			width: 31.4009662vw;
+		}
+	}
+
+	button {
+		background: @dark-mint;
+		color: @white-two;
+		border: none;
+		border-radius: 20px;
+		width: 66.1835749vw;
+		height: 50px;
+		position: absolute;
+		bottom: 2.5625rem;
+		left: 50%;
+		transform: translate(-50%,0);
+		cursor: pointer;
+	}
+}
+.dateBox {
+	max-width: 368px;
+	width: 100%;
+	padding: 0 1.4375rem;
+	margin: 1.4375rem auto 3rem;
+	box-sizing: border-box;
+	h3 {
+		font-size: .75rem;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		color: @warm-grey;
+		text-align: center;
+	}
+}
+.wrapper {
+	max-width: 368px;
+	width: 100%;
+	height: 66px;
+	background: @white-three;
+	border-radius: 15px;
+	margin: 1.4375rem auto 0;
+	position: relative;
+	transform: scale(1);
+
+	h4 {
+		font-size: .875rem;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		color: @black;
+		position: relative;
+		left: 2.5625rem;
+		top: 50%;
+		transform: translate(0,-50%);
+	}
+
+	h5 {
+		font-size: .875rem;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		color: @black;
+		position: absolute;
+		top: 50%;
+		right: 5rem;
+		margin: 0;
+		transform: translate(0,-50%);
+	}
+
+	.close {
+		top: 50%;
+		right: 2rem;
+		transform: rotate(45deg) translate(0,-50%);
+	}
+}

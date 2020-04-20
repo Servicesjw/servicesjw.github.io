@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,   user-scalable=0" name="viewport">
+
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> 
+		<meta http-equiv="Pragma" content="no-cache" /> 
+		<meta http-equiv="Expires" content="0" />
+					<!-- FONTS -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+
+
+					<!-- CSS FILES -->
+		
+		<link rel="stylesheet" href="/css/styles.css">
+
+
+		<link rel="manifest" href="manifest.webmanifest">
+
+	
+
+
+		<title>Services</title>
+	
+
+	</head>
+
+	<body>
+		<main>
+			<section class="current">
+				<h1>Годин: <span class="hours">0</span></h1>
+				<h2>Публікації: <span class="publications">0</span></h2>
+				<h2>Відео: <span class="videos">0</span></h2>
+				<h2>Повторні відвідини: <span class="visits">0</span></h2>
+				<h2>Окремі біблійні вивчення: <span class="studies">0</span></h2>
+			</section>
+			<section class="scheduled">
+				<div class="btns">
+					<div class="sort"></div>
+					<div class="drag"></div>
+					<div class="newSchedule"></div>
+				</div>
+				<div class="service"></div>
+			</section>
+			<section class="addSchedule invisible">
+				<div class="content">
+					<h3>Запланувати служіння</h3>
+					<div class="close"></div>
+					<form action="">
+						<input class="partner" type="text" placeholder="Партнер">
+						<input class="Date changable" type="text" placeholder="Дата">
+						<input class="Hour changable" type="text" placeholder="Година">
+						<select class="Type" type="text" required>
+							<option value="" disabled selected>Вид служіння</option>
+							<option value="Проповіднецьке">Проповіднецьке</option>
+							<option value="Зі стендом">Зі стендом</option>
+							<option value="Біблійне вивчення">Біблійне вивчення</option>
+							<option value="По території">По території</option>
+						</select>
+					</form>
+					<button class="planService">Готово</button>
+				</div>
+			</section>
+		</main>
+		<script src="/js/addSchedule.js"></script>
+		<script src="/js/main.js"></script>
+	</body>
+</html>
