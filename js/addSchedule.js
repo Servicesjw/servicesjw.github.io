@@ -3,6 +3,7 @@ order = true;
 
 var button = document.querySelector('.planService');
 var sort = document.querySelector('.sort');
+var shareButton = document.querySelector('.shareButton');
 
 button.addEventListener('click', function () {
 	let partner = document.querySelector('input.partner').value;
@@ -21,6 +22,27 @@ sort.addEventListener('click', function () {
 	order = !order;
 	addSchedule();
 });
+
+shareButton.addEventListener('click', event => {
+  if (navigator.share) {
+  	urls = getInviteUrl();
+    navigator.share({
+		title: 'Тест',
+		text: 'Тест 2',
+    	url: urls
+    }).then(() => {
+      console.log('Thanks for sharing!');
+      alert(1);
+    })
+    .catch(console.error);
+  } else {
+    alert(2);
+  }
+});
+
+function getInviteUrl () {
+	return document.location.href + document.querySelector('input[type="hidden"]').value;
+}
 
 function addSchedule () {
 	var allCookie = document.cookie.split('; ').sort();

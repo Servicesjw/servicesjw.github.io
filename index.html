@@ -51,8 +51,8 @@
 					<div class="close"></div>
 					<form action="">
 						<input class="partner" type="text" placeholder="Партнер">
-						<input class="Date" type="date" placeholder="Дата">
-						<input class="Hour" type="time" placeholder="Година">
+						<input class="Date changable" type="text" placeholder="Дата">
+						<input class="Hour changable" type="text" placeholder="Година">
 						<select class="Type" type="text" required>
 							<option value="" disabled selected>Вид служіння</option>
 							<option value="Проповіднецьке">Проповіднецьке</option>
@@ -60,8 +60,10 @@
 							<option value="Біблійне вивчення">Біблійне вивчення</option>
 							<option value="По території">По території</option>
 						</select>
+						<input type="hidden">
 					</form>
 					<button class="planService">Готово</button>
+					<img src="/share.svg" class="shareButton" alt="Share" value='?d=2020-04-21&h=13:00&p=Dmitrow%20Igor&t=Bible'>
 				</div>
 			</section>
 		</main>

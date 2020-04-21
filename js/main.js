@@ -1,9 +1,25 @@
 var scheduledOpen = false;
 
+function initServices () {
+	let queryString = window.location.search;
+
+	let urlParams = new URLSearchParams(queryString);
+
+	var date = urlParams.get('d');
+	var hour = urlParams.get('h');
+	var partner = urlParams.get('p');
+	var type = urlParams.get('t');
+
+
+	// d=2020-04-21&h=13:00&p=Dmitrow%20Igor&t=Bible
+	console.log(date,hour,partner,type);
+
+}
+
 function changebleType () {
 	let input = document.querySelectorAll('.changable');
 
-    if(input) {
+    if(input != '') {
         setTimeout(function () {
             input[0].addEventListener('focus', function() {
                 input[0].type = 'date';
@@ -22,6 +38,8 @@ function changebleType () {
             }, true);  
         }, 500);
     }
+
+    let inputs = document.querySelectorAll('form input[type="text"]');
 }
 
 
