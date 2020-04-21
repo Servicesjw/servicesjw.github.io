@@ -32,11 +32,10 @@ shareButton.addEventListener('click', event => {
     	url: urls
     }).then(() => {
       console.log('Thanks for sharing!');
-      alert(1);
     })
     .catch(console.error);
   } else {
-    alert(2);
+	  console.log('1');
   }
 });
 
