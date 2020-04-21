@@ -214,14 +214,42 @@ h2 {
 		color: @white-two;
 		border: none;
 		border-radius: 20px;
-		width: 66.1835749vw;
+		width: 56.18vw;
 		height: 50px;
 		position: absolute;
 		bottom: 2.5625rem;
-		left: 50%;
-		transform: translate(-50%,0);
+		margin-left: 1.3125rem;
 		cursor: pointer;
 	}
+
+	img {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		bottom: 2.5625rem;
+		transform: translate(0,-75%);
+		right: 1.3125rem;
+		cursor: pointer;
+		user-select: none;
+	}
+}
+
+.textCopy {
+	position: absolute;
+	z-index: 100;
+	bottom: 16%;
+	left: 50%;
+	transform: translate(-50%,0);
+	font-family: Roboto, sans-serif;
+	color: @white-two;
+    background: rgba(12,12,12,.7);
+    border-radius: 10px;
+    font-size: .75rem;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
 }
 .dateBox {
 	max-width: 368px;

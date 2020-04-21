@@ -26,16 +26,33 @@ sort.addEventListener('click', function () {
 shareButton.addEventListener('click', event => {
   if (navigator.share) {
   	urls = getInviteUrl();
+  	name = getName();
+  	partner = document.querySelector('input.partner').value;
+	date = document.querySelector('input.Date').value;
+	hour = document.querySelector('input.Hour').value;
     navigator.share({
 		title: 'Тест',
-		text: 'Тест 2',
+		text:  `${name} пропонує піти з ним в служіння ${date} о ${hour}`,
     	url: urls
     }).then(() => {
       console.log('Thanks for sharing!');
     })
     .catch(console.error);
   } else {
-	  console.log('1');
+  	el = document.createElement('textarea');
+	el.value = document.location.href + document.querySelector('input[type="hidden"]').value;
+	document.body.appendChild(el);
+	el.select();
+	document.execCommand('copy');
+	document.body.removeChild(el);
+
+	text = document.createElement('div');
+	text.classList.add('textCopy');
+	text.innerHTML = 'Посилання скопійовано';
+	document.body.appendChild(text);
+	setTimeout(function () {
+		document.body.removeChild(text);
+	}, 750);
   }
 });
 
@@ -43,9 +60,16 @@ function getInviteUrl () {
 	return document.location.href + document.querySelector('input[type="hidden"]').value;
 }
 
+function getName(name='name') {
+  let matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : "Дмитров";
+}
 function addSchedule () {
 	var allCookie = document.cookie.split('; ').sort();
 	var hours = 0;
+	console.log(1);
 	if(!order) {
 		allCookie = allCookie.reverse();
 	}
@@ -57,15 +81,17 @@ function addSchedule () {
 				time = service[0].split(' ');
 				value = service[1].split('|');
 				date = time[0].split('-');
-				hour = time[1];
+				hour = time[1].split(':');
 				partner = value[0];
 				type = value[1];
 				let dateObj = new Date();
 			    let month = dateObj.getMonth()+1;
 			    let day = dateObj.getDate()
 			    let year = dateObj.getFullYear();
+			    let rHour = dateObj.getHours();
+			    let rMin = dateObj.getMinutes();
 			    // if(date[0] >= year && date[1] >= month && date[2] >= day) {
-			    if(date[0] == year && date[1] >= month && date[2] >= day || date[0] > year){
+			    if(date[0] == year && date[1] >= month && date[2] > day || date[0] == year && date[1] >= month && date[2] == day && hour[0] >= rHour || date[0] > year){
 			    	if(!document.getElementById(`${date[2]}|${date[1]}`)){
 			    		let dateBox = document.createElement('div');
 		                dateBox.setAttribute("id", `${date[2]}|${date[1]}`);
@@ -102,11 +128,9 @@ function addSchedule () {
 			    		}, 300);
 			    	})
 
-			    }else if (date[0] == year && date[1] == month && parseInt(date[2]) < day) {
+			    }else if (date[0] == year && date[1] == month && parseInt(date[2]) < day || date[0] == year && date[1] == month && parseInt(date[2]) == day && hour[0] < rHour) {
 			    	hours++;
-			    	console.log(1);
 			    }else {
-			    	console.log(year==date[0],month==date[1],month,date[1],day<date[2]);
 			    }
 			}
 		});	

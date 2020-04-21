@@ -12,7 +12,9 @@ function initServices () {
 
 
 	// d=2020-04-21&h=13:00&p=Dmitrow%20Igor&t=Bible
-	console.log(date,hour,partner,type);
+	document.cookie = encodeURIComponent(date + ' ' + hour) + '=' + encodeURIComponent(partner + '|' + type)+'; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT';
+	addSchedule();
+	history.replaceState({ foo: 'bar' }, 'page 2','/');
 
 }
 
@@ -39,7 +41,20 @@ function changebleType () {
         }, 500);
     }
 
-    let inputs = document.querySelectorAll('form input[type="text"]');
+    document.querySelectorAll('.addSchedule form input[type="text"]').forEach( function(element, index) {
+    	element.addEventListener('change', function (e) {
+    		hidden = document.querySelector('input[type="hidden"]');
+    		if(e.target.classList.contains('Date')){
+    			val = hidden.value.split('&');
+    			val[0] = `?d=${e.target.value}`;
+    			hidden.value = val.join('&');
+    		}else if (e.target.classList.contains('Hour')) {
+    			val = hidden.value.split('&');
+    			val[1] = `h=${e.target.value}`;
+    			hidden.value = val.join('&');
+    		}
+    	})
+    });
 }
 
 
@@ -68,7 +83,8 @@ window.addEventListener('load', function () {
 	var newSchedule = document.querySelector('.newSchedule');
 	var close = document.querySelector('.close');
 	registerSW();
-	addSchedule();
+	// addSchedule();
+	initServices();
 	newSchedule.addEventListener('click',function () {
 		document.querySelector('.addSchedule').classList.remove('invisible');
 		document.querySelector('.addSchedule .content').classList.add('aniSchedule');
