@@ -21,7 +21,10 @@ function initServices () {
 		username = '';
 	}
 	document.querySelector('section.settings input').value = username;
-
+	hidden = document.querySelector('input[type="hidden"]');
+	val = hidden.value.split('&');
+	val[2] = `p=${encodeURIComponent(username)}`;
+	hidden.value = val.join('&');
 }
 
 function changebleType () {
@@ -75,6 +78,10 @@ function changebleType () {
     username = document.querySelector('section.settings input');
     username.addEventListener('change', function (e) {
     	document.cookie = `username=${encodeURIComponent(e.target.value)}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+    	hidden = document.querySelector('input[type="hidden"]');
+		val = hidden.value.split('&');
+		val[2] = `p=${encodeURIComponent(username)}`;
+		hidden.value = val.join('&');
     });
 }
 

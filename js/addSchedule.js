@@ -32,7 +32,7 @@ shareButton.addEventListener('click', event => {
 	hour = document.querySelector('input.Hour').value;
     navigator.share({
 		title: 'Тест',
-		text:  `${name} пропонує піти з ним в служіння ${date} о ${hour}`,
+		text:  `${name} пропонує піти з ним в служіння ${date} о ${hour}\n`,
     	url: urls
     }).then(() => {
       console.log('Thanks for sharing!');
