@@ -16,6 +16,12 @@ function initServices () {
 	addSchedule();
 	history.replaceState({ foo: 'bar' }, 'page 2','/');
 
+	var username = getUsername();
+	if (!username) {
+		username = '';
+	}
+	document.querySelector('section.settings input').value = username;
+
 }
 
 function changebleType () {
@@ -55,6 +61,21 @@ function changebleType () {
     		}
     	})
     });
+    var lang = document.querySelectorAll('.languages button');
+
+   	lang.forEach( function(element, index) {
+    	element.addEventListener('click', function (e) {
+    		lang.forEach(function (el, index) {
+    			el.classList.add('disabled');
+    		});
+    		e.target.classList.remove('disabled');		
+    	});
+    });
+
+    username = document.querySelector('section.settings input');
+    username.addEventListener('change', function (e) {
+    	document.cookie = `username=${encodeURIComponent(e.target.value)}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+    });
 }
 
 
@@ -81,7 +102,9 @@ window.addEventListener('scroll', function () {
 
 window.addEventListener('load', function () {
 	var newSchedule = document.querySelector('.newSchedule');
-	var close = document.querySelector('.close');
+	var close = document.querySelector('.addSchedule .close');
+	var openSet = document.querySelector('img.settings');	
+	var closeSet = document.querySelector('.settings .close');
 	registerSW();
 	// addSchedule();
 	initServices();
@@ -95,8 +118,23 @@ window.addEventListener('load', function () {
 		}, 10);
 	});
 
+	openSet.addEventListener('click',function () {
+		document.querySelector('section.settings').classList.remove('invisible');
+		document.querySelector('section.settings .content').classList.add('aniSchedule');
+		document.body.style.overflow = 'hidden';
+
+		setTimeout(function () {
+			document.querySelector('section.settings .content').classList.remove('aniSchedule');
+		}, 10);
+	});
+
 	close.addEventListener('click',function () {
 		document.querySelector('.addSchedule').classList.add('invisible');
+		document.body.style.overflow = 'initial';
+	});
+
+	closeSet.addEventListener('click',function () {
+		document.querySelector('section.settings').classList.add('invisible');
 		document.body.style.overflow = 'initial';
 	});
 

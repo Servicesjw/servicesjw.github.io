@@ -36,12 +36,13 @@
 				<h2>Відео: <span class="videos">0</span></h2>
 				<h2>Повторні відвідини: <span class="visits">0</span></h2>
 				<h2>Окремі біблійні вивчення: <span class="studies">0</span></h2>
+				<img class="settings" src="/settings.svg" alt="settings">
 			</section>
 			<section class="scheduled">
 				<div class="btns">
-					<div class="sort"></div>
+					<a class="sorts"><div class="sort"></div></a>
 					<div class="drag"></div>
-					<div class="newSchedule"></div>
+					<a class="newS"><div class="newSchedule"></div></a>
 				</div>
 				<div class="service"></div>
 			</section>
@@ -62,8 +63,23 @@
 						</select>
 						<input type="hidden" value="?d=2020-04-21&h=13:00&p=Dmitrow%20Igor&t=Bible">
 					</form>
-					<button class="planService">Готово</button>
-					<img src="/share.svg" class="shareButton" alt="Share">
+					<div>
+						<button class="planService">Готово</button>
+						<img src="/share.svg" class="shareButton" alt="Share">
+					</div>
+				</div>
+			</section>
+			<section class="settings invisible">
+				<div class="content">
+					<h3>Налаштування</h3>
+					<div class="close"></div>
+					<div class="languages">
+						<button class="Ukr">Укр</button>
+						<button class="Eng disabled" >Eng</button>
+						<button class="Rus disabled" >Рус</button>
+					</div>
+					<input type="text" class="username" placeholder="Прізвище та ім'я*">
+					<h6>* Прізвище та ім'я потрібно для того, щоб вказувати хто запросив людину в служіння</h6>
 				</div>
 			</section>
 		</main>

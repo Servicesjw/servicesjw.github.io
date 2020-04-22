@@ -26,7 +26,7 @@ sort.addEventListener('click', function () {
 shareButton.addEventListener('click', event => {
   if (navigator.share) {
   	urls = getInviteUrl();
-  	name = getName();
+  	name = getUsername();
   	partner = document.querySelector('input.partner').value;
 	date = document.querySelector('input.Date').value;
 	hour = document.querySelector('input.Hour').value;
@@ -60,16 +60,15 @@ function getInviteUrl () {
 	return document.location.href + document.querySelector('input[type="hidden"]').value;
 }
 
-function getName(name='name') {
+function getUsername(name='username') {
   let matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
-  return matches ? decodeURIComponent(matches[1]) : "Дмитров";
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 function addSchedule () {
 	var allCookie = document.cookie.split('; ').sort();
 	var hours = 0;
-	console.log(1);
 	if(!order) {
 		allCookie = allCookie.reverse();
 	}
@@ -77,7 +76,8 @@ function addSchedule () {
 		document.querySelector('.service').innerHTML = '';
 		allCookie.forEach( function(element, index) {
 			var service = decodeURIComponent(element).split('=');
-			if(service != '') {
+			console.log(service);
+			if(service != '' && service[0] != 'username') {
 				time = service[0].split(' ');
 				value = service[1].split('|');
 				date = time[0].split('-');
@@ -111,7 +111,7 @@ function addSchedule () {
 
 			    	time = document.createElement('h5');
 			    	time.classList.add('time');
-			    	time.innerHTML = hour;
+			    	time.innerHTML = `${hour[0]}:${hour[1]}`;
 			    	wrapper.appendChild(time);
 
 			    	close = document.createElement('div');
@@ -124,7 +124,7 @@ function addSchedule () {
 			    		document.cookie = cookie + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			    		e.target.parentElement.classList.add('aniDelete');
 			    		setTimeout(function () {
-			    			e.target.parentElement.classList.add('invisible');
+			    			addSchedule();
 			    		}, 300);
 			    	})
 

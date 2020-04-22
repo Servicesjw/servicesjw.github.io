@@ -22,7 +22,7 @@ h1 {
 	letter-spacing: normal;
 	color: @white-two;
 	margin: 0;
-	padding: 3.75rem 0 0 2.8125rem;
+	padding: 3rem 0 0 2.8125rem;
 }
 
 h2 {
@@ -36,16 +36,30 @@ h2 {
 	margin: 0.9375rem 0 0 2.8125rem;
 }
 
+.settings {
+	position: absolute;
+	width: 1.5rem;
+	top: 2rem;
+	right: 2rem;
+}
+
 .btns {
 	padding-top: 19px;
 	position: relative;
+}
+
+a.sorts {
+	width: 26px;
+	height: 20px;
+	margin-left: 53px;
+	display: block;
 }
 
 .sort {
 	width: 26px;
 	height: 3px;
 	background: @warm-grey;
-	margin: 0 0 0 53px;
+	// margin: 0 0 0 53px;
 	position: relative;
 	cursor: pointer;
 
@@ -76,12 +90,20 @@ h2 {
 	margin-top: -10px;
 }
 
+a.newS {
+	width: 20px;
+	height: 22px;
+	position: absolute;
+	right: 50px;
+	margin-top: -15px;
+}
+
 .newSchedule {
 	width: 19px;
 	height: 3px;
 	background: @warm-grey;
 	position: absolute;
-	right: 50px;
+	// right: 50px;
 	margin-top: 10px;
 	cursor: pointer;
 
@@ -97,6 +119,7 @@ h2 {
 
 .current {
 	position: fixed;
+	width: 100%;
 }
 
 .aniSchedule {
@@ -109,7 +132,7 @@ h2 {
 	transition: transform .3s;
 }
 
-.addSchedule {
+.addSchedule, section.settings {
 	width: 100vw;
 	height: 100vh;
 	background: rgba(12,12,12,.7);
@@ -188,10 +211,6 @@ h2 {
 			font-family: Roboto;
 		}
 
-		input[type='date'], input[type='time'] {
-			-webkit-appearance: none;
-		}
-
 		select {
 			padding-left: 1rem;
 		}
@@ -209,6 +228,15 @@ h2 {
 		}
 	}
 
+	div:last-child {
+		width: 72.4637681vw;
+		position: absolute;
+		bottom: 2.5625rem;
+		height: 50px;
+		left: 50%;	
+		transform: translate(-50%,0);
+	}
+
 	button {
 		background: @dark-mint;
 		color: @white-two;
@@ -217,8 +245,8 @@ h2 {
 		width: 56.18vw;
 		height: 50px;
 		position: absolute;
-		bottom: 2.5625rem;
-		margin-left: 1.3125rem;
+		// bottom: 2.5625rem;
+		// margin-left: 1.3125rem;
 		cursor: pointer;
 	}
 
@@ -226,9 +254,9 @@ h2 {
 		width: 20px;
 		height: 20px;
 		position: absolute;
-		bottom: 2.5625rem;
-		transform: translate(0,-75%);
-		right: 1.3125rem;
+		// bottom: 2.5625rem;
+		transform: translate(0,75%);
+		right: 0;
 		cursor: pointer;
 		user-select: none;
 	}
@@ -279,6 +307,7 @@ h2 {
 	transform: scale(1);
 
 	h4 {
+		max-width: 250px;	
 		font-size: .875rem;
 		font-weight: normal;
 		font-stretch: normal;
@@ -311,5 +340,46 @@ h2 {
 		top: 50%;
 		right: 2rem;
 		transform: rotate(45deg) translate(0,-50%);
+	}
+}
+
+section.settings {
+
+	div.languages {
+		position: static;
+		transform: translate(0);
+		display: flex;
+		justify-content: space-around;
+		margin: 3rem auto;
+
+	}
+	button {
+		width: 25%;
+		position: static;
+		border-radius: 10px;
+	}
+
+	input {
+		width: 72.4637681vw;
+		height: 49px;
+		border: none;
+		border-radius: 10px;
+		margin: 0 auto;
+		display: block;
+		background: @white-four;
+		padding-left: 1.3125rem;
+		box-sizing: border-box;
+		color: @black-two;
+		font-family: Roboto;
+	}
+
+	h6 {
+		color: @white-three;
+		position: absolute;
+		width: 80%;
+		text-align: center;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%,0);
 	}
 }
